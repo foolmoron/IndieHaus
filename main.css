@@ -32,8 +32,8 @@ body {
 .other {
     flex-direction: row;
 }
-.other .item:hover {
-    flex-grow: 1.9;
+.other .item:hover, .other .item:hover {
+    flex-grow: 19;
 }
 
 @media (max-width: 1024px) {
@@ -46,7 +46,7 @@ body {
     border: 3px solid white;
     border-left-width: 6px;
     border-right-width: 0px;
-    flex-grow: 1;
+    flex-grow: 10;
     flex-basis: 0;
     white-space: pre-wrap;
     font-family: 'Rubik Mono One', sans-serif;
@@ -59,6 +59,25 @@ body {
 }
 .item:not(:hover) {
     background-color: black !important;
+}
+
+.background-filler {
+    flex-grow: 0.25;
+    flex-basis: 0;
+    transition: flex-grow 2s;
+    background: linear-gradient(160deg, #f34242, #fb5d5d, #ffb662, #53fafb, #7679ff, #f78af3, #f77373, #f34242);
+    background-size: 600% 600%;
+    animation: rainbow 9s ease infinite;
+}
+.other .background-filler:hover {
+    flex-grow: 200;
+    transition: flex-grow 6s;
+}
+
+@keyframes rainbow { 
+    0% { background-position:78% 0% }
+    50% { background-position:23% 100% }
+    100% { background-position:78% 0% }
 }
 
 .letter-highlight {
