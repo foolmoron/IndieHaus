@@ -1,3 +1,8 @@
+var latestYaw = 0
+var latestPitch = Math.PI*0.6
+var latestRoll = 0
+var latestDeviceRotation = 0
+
 window.addEventListener('deviceorientation', function(e) {
     var yaw = e.alpha / 180 * Math.PI
     var pitch = e.beta / 180 * Math.PI
@@ -10,8 +15,6 @@ window.addEventListener('deviceorientation', function(e) {
     latestPitch = pitch
     latestRoll = roll
     latestDeviceRotation = angle
-
-    updateFlexboxes()
 })
 
 var flexItems = document.querySelectorAll('.other > *')
@@ -35,3 +38,14 @@ function updateFlexboxes() {
         }
     }
 }
+
+var lastCalled = performance.now();
+function updateFlexboxesThrottled() {
+    var now = performance.now();
+    if (now - lastCalled > 250) {
+        lastCalled = now;
+        updateFlexboxes();
+    }
+    requestAnimationFrame(updateFlexboxesThrottled)
+}
+updateFlexboxesThrottled()
