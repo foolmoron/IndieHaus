@@ -1,3 +1,4 @@
+var gyro = false
 var latestYaw = 0
 var latestPitch = Math.PI*0.6
 var latestRoll = 0
@@ -11,14 +12,25 @@ window.addEventListener('deviceorientation', function(e) {
     var y = -Math.sin(yaw) * Math.sin(pitch) * Math.sin(roll) + Math.cos(yaw) * Math.cos(roll)
     var z = Math.cos(pitch) * Math.sin(roll)
     var angle = Math.atan2(y, x)
+    gyro = true
     latestYaw = yaw
     latestPitch = pitch
     latestRoll = roll
     latestDeviceRotation = angle
 })
 
+window.addEventListener('mousemove', function(e) {
+    gyro = false
+})
+
 var flexItems = document.querySelectorAll('.other > *')
 function updateFlexboxes() {
+    if (!gyro) {
+        for (var i = 0; i < flexItems.length; i++) {
+            flexItems[i].style.flexGrow = null
+        }
+        return
+    }
     if (latestPitch <= 0) {
         flexItems[0].style.flexGrow = 1
         for (var i = 1; i < flexItems.length; i++) {
