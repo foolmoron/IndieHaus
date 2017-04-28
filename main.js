@@ -1,6 +1,6 @@
 var gyro = false
 var latestYaw = 0
-var latestPitch = Math.PI*0.6
+var latestPitch = Math.PI*0.7
 var latestRoll = 0
 var latestDeviceRotation = 0
 
