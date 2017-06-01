@@ -36,11 +36,11 @@ function updateFlexboxes() {
         for (var i = 1; i < flexItems.length; i++) {
             flexItems[i].style.flexGrow = 10
         }
-        flexItems[flexItems.length - 1].style.flexGrow = 30
+        flexItems[flexItems.length - 1].style.flexGrow = 45
     } else if (latestPitch <= Math.PI*0.8) {
         flexItems[0].style.flexGrow = 3
         for (var i = 1; i < flexItems.length; i++) {
-            flexItems[i].style.flexGrow = 200 * latestPitch / Math.PI
+            flexItems[i].style.flexGrow = 55
         }
         flexItems[flexItems.length - 1].style.flexGrow = 45
     } else {
