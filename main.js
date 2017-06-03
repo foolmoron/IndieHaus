@@ -23,6 +23,7 @@ window.addEventListener('mousemove', function(e) {
     gyro = false
 })
 
+// flexbox animation
 var flexItems = document.querySelectorAll('.other > *')
 function updateFlexboxes() {
     if (!gyro) {
@@ -51,13 +52,26 @@ function updateFlexboxes() {
     }
 }
 
-var lastCalled = performance.now();
+// loop
+var lastCalled = performance.now()
 function updateFlexboxesThrottled() {
-    var now = performance.now();
+    var now = performance.now()
     if (now - lastCalled > 250) {
-        lastCalled = now;
-        updateFlexboxes();
+        lastCalled = now
+        updateFlexboxes()
     }
     requestAnimationFrame(updateFlexboxesThrottled)
 }
 updateFlexboxesThrottled()
+
+// text vomit copying
+const MULTIPLES = 10
+var textVomits = document.querySelectorAll('.text-vomit')
+for (var i = 0; i < textVomits.length; i++) {
+    var textVomit = textVomits[i]
+    var text = textVomit.innerHTML
+    for (var i = 0; i < MULTIPLES; i++) {
+        text += text
+    }
+    textVomit.innerHTML = text
+}

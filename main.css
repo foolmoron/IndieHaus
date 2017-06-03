@@ -5,6 +5,7 @@ body {
     background: white;
     height: 100%;
     margin: 0;
+    overflow: hidden;
 }
 
 .container {
@@ -56,6 +57,7 @@ body {
     box-shadow: 0px 0px 17px 5px rgba(0,0,0,0.6);
     transition: background-color 0.4s, flex-grow 1s;
     transform: translate3d(0, 0, 0); /* force separate paint layers */
+    z-index: 10;
 }
 .item:not(:hover) {
     background-color: black !important;
@@ -85,4 +87,20 @@ body {
     margin-top: -11px;
     letter-spacing: 1px;
     -webkit-text-stroke: 3px black;
+}
+
+.text-vomit {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    white-space: pre-line;
+    word-break: break-all;
+    color: #616161;
+    font-family: monospace;
+    font-size: 1.2rem;
+    letter-spacing: -1px;
+    word-spacing: -4px;
+    mix-blend-mode: soft-light;
+    z-index: 5;
+    pointer-events: none;
 }
